@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dlarenas\\source\\repos\\ApiFin7\\Web.Api.Core\\Web.Api.Core.csproj": {}
+    "C:\\Users\\dlarenas\\OneDrive - Constructora Carran SA\\Escritorio\\SRT\\ApiFin7\\Web.Api.Core\\Web.Api.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dlarenas\\source\\repos\\ApiFin7\\Web.Api.Core\\Web.Api.Core.csproj": {
+    "C:\\Users\\dlarenas\\OneDrive - Constructora Carran SA\\Escritorio\\SRT\\ApiFin7\\Web.Api.Core\\Web.Api.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dlarenas\\source\\repos\\ApiFin7\\Web.Api.Core\\Web.Api.Core.csproj",
+        "projectUniqueName": "C:\\Users\\dlarenas\\OneDrive - Constructora Carran SA\\Escritorio\\SRT\\ApiFin7\\Web.Api.Core\\Web.Api.Core.csproj",
         "projectName": "Web.Api.Core",
-        "projectPath": "C:\\Users\\dlarenas\\source\\repos\\ApiFin7\\Web.Api.Core\\Web.Api.Core.csproj",
+        "projectPath": "C:\\Users\\dlarenas\\OneDrive - Constructora Carran SA\\Escritorio\\SRT\\ApiFin7\\Web.Api.Core\\Web.Api.Core.csproj",
         "packagesPath": "C:\\Users\\dlarenas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dlarenas\\source\\repos\\ApiFin7\\Web.Api.Core\\obj\\",
+        "outputPath": "C:\\Users\\dlarenas\\OneDrive - Constructora Carran SA\\Escritorio\\SRT\\ApiFin7\\Web.Api.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dlarenas\\AppData\\Roaming\\NuGet\\NuGet.Config",
