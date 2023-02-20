@@ -1,0 +1,15 @@
+C:\Users\dlarenas\source\repos\ApiFin7\Web.Api.Core\obj\Debug\net6.0\Web.Api.Core.csproj.AssemblyReference.cache
+C:\Users\dlarenas\source\repos\ApiFin7\Web.Api.Core\obj\Debug\net6.0\Web.Api.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dlarenas\source\repos\ApiFin7\Web.Api.Core\obj\Debug\net6.0\Web.Api.Core.AssemblyInfoInputs.cache
+C:\Users\dlarenas\source\repos\ApiFin7\Web.Api.Core\obj\Debug\net6.0\Web.Api.Core.AssemblyInfo.cs
+C:\Users\dlarenas\source\repos\ApiFin7\Web.Api.Core\obj\Debug\net6.0\Web.Api.Core.csproj.CoreCompileInputs.cache
+C:\Users\dlarenas\source\repos\ApiFin7\Web.Api.Core\bin\Debug\net6.0\Web.Api.Core.exe
+C:\Users\dlarenas\source\repos\ApiFin7\Web.Api.Core\bin\Debug\net6.0\Web.Api.Core.deps.json
+C:\Users\dlarenas\source\repos\ApiFin7\Web.Api.Core\bin\Debug\net6.0\Web.Api.Core.runtimeconfig.json
+C:\Users\dlarenas\source\repos\ApiFin7\Web.Api.Core\bin\Debug\net6.0\Web.Api.Core.dll
+C:\Users\dlarenas\source\repos\ApiFin7\Web.Api.Core\bin\Debug\net6.0\Web.Api.Core.pdb
+C:\Users\dlarenas\source\repos\ApiFin7\Web.Api.Core\obj\Debug\net6.0\Web.Api.Core.dll
+C:\Users\dlarenas\source\repos\ApiFin7\Web.Api.Core\obj\Debug\net6.0\refint\Web.Api.Core.dll
+C:\Users\dlarenas\source\repos\ApiFin7\Web.Api.Core\obj\Debug\net6.0\Web.Api.Core.pdb
+C:\Users\dlarenas\source\repos\ApiFin7\Web.Api.Core\obj\Debug\net6.0\Web.Api.Core.genruntimeconfig.cache
+C:\Users\dlarenas\source\repos\ApiFin7\Web.Api.Core\obj\Debug\net6.0\ref\Web.Api.Core.dll
