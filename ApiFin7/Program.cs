@@ -11,6 +11,9 @@ using Web.Api.Infrastructure.Data.EntityFramework.Repositories;
 using Web.Api.Infrastructure.Data.EntityFramework.Entities;
 using Microsoft.EntityFrameworkCore;
 using Autofac;
+using Web.Api.Presenters.SmartSheet;
+using Web.Api.Core.Interfaces.UseCase.SmartSheet;
+using Web.Api.Core.UseCases.SmartSheet;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,7 +33,10 @@ builder.Services.AddScoped<IBancoEstadoRepository, BancoEstadoRepository>();
 builder.Services.AddScoped<IGetPlantillaUseCase, GetPlantillaUseCase>();
 builder.Services.AddScoped<IgetLibroMayor, getLibroMayor>();
 builder.Services.AddScoped<ILibroMayorRepository, LibroMayorRepository>();
+builder.Services.AddScoped<ISmartSheetRepository, SmartSheetRepository>();
+builder.Services.AddScoped<IGetSmartSheetComisiones, GetSmartSheetComisiones>();
 builder.Services.AddTransient<GetPlantillaPresenter>();
+builder.Services.AddTransient<GetSmartSheetComisionesPresenter>();
 
 var app = builder.Build();
 
