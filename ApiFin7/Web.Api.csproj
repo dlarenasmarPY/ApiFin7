@@ -12,14 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\ForPay\" />
-    <Folder Include="Models\LibroMayor\" />
-    <Folder Include="Models\Reportes\" />
-    <Folder Include="Presenters\ForPay\" />
-    <Folder Include="Presenters\LibroMayor\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Web.Api.Core\Web.Api.Core.csproj" />
     <ProjectReference Include="..\Web.Api.Infrastructure\Web.Api.Infrastructure.csproj" />
   </ItemGroup>
