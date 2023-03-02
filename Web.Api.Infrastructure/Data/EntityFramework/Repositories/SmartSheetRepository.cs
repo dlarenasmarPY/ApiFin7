@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,17 @@ namespace Web.Api.Infrastructure.Data.EntityFramework.Repositories
 {
     public class SmartSheetRepository: ISmartSheetRepository
     {
+        protected readonly IConfiguration _configuration;
+
+        public SmartSheetRepository(IConfiguration configuration)
+        {
+           _configuration= 
+                configuration;
+        }
         public async Task<List<SmartSheetComisiones>> getDataComisiones(SmartSheetComisionesRequest request)
         {
             var fechaDefault = DateTime.Parse("1900-01-01 00:00:00.000");
-            using (var context = new Fin700Context())
+            using (var context = new Fin700Context(_configuration))
             {
                 var query = (from a in context.InmTCartaOferta
                              join b in context.GlbTEntidads on a.PEntId equals b.EntId

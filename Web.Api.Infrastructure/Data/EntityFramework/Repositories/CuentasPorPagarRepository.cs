@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -13,10 +14,15 @@ namespace Web.Api.Infrastructure.Data.EntityFramework.Repositories
 {
     public class CuentasPorPagarRepository : ICuentasPorPagarRepository
     {
+        protected readonly IConfiguration _configuration;
+        public CuentasPorPagarRepository(IConfiguration configuration)
+        {
+            _configuration= configuration;
+        }
         public async Task<List<BalanceCuentasPagarCentroCosto>> GetBalanceCuentasPagarCentroCostos(balanceCuentasPorPagarRequest request)
         {
             List<BalanceCuentasPagarCentroCosto> pagarCentroCostos;
-            using (Fin700Context context = new Fin700Context())
+            using (Fin700Context context = new Fin700Context(_configuration))
             {
                 return await Task.FromResult((from mov in context.CceTMovimientos
                                               join cta in context.ConTCuentas on mov.PCtaId equals cta.CtaId
@@ -80,7 +86,7 @@ namespace Web.Api.Infrastructure.Data.EntityFramework.Repositories
 
         public async Task<List<BalanceCuentasPagarCentroCostoProvision>> getBalanceProvision(BalanceCuentasPorPagarCentroCostoProvisionRequest request)
         {
-            using Fin700Context context = new Fin700Context();
+            using Fin700Context context = new Fin700Context(_configuration);
             return await Task.FromResult((from mov in context.CceTMovimientos
                                           join cta in context.ConTCuentas on mov.PCtaId equals cta.CtaId
                                           join per in context.GlbTPeriodos on new { mov.PerId, mov.PEmpId } equals new { per.PerId, per.PEmpId }

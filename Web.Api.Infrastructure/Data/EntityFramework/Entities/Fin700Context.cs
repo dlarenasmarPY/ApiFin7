@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore.Metadata;
+
 
 namespace Web.Api.Infrastructure.Data.EntityFramework.Entities;
 
 public partial class Fin700Context : DbContext
 {
-    public Fin700Context()
+    protected readonly IConfiguration _configuration;
+    public Fin700Context(IConfiguration configuration)
     {
+        _configuration = configuration;
     }
 
     public Fin700Context(DbContextOptions<Fin700Context> options)
@@ -3112,8 +3117,17 @@ public partial class Fin700Context : DbContext
     public virtual DbSet<XparVtatDoctoventacab> XparVtatDoctoventacabs { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=10.170.217.50;Database=Fin700;User ID=Consulta_Carran;password=carran123.;TrustServerCertificate=True");
+    {
+        optionsBuilder.UseSqlServer(_configuration.GetConnectionString("Default"));
+        //IConfigurationRoot configuration = new ConfigurationBuilder().
+        //.AddJsonFile("appsettings.json")
+        //.Build();
+        //optionsBuilder.UseSqlServer(configuration.GetConnectionString("Default"));
+    }
+
+
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+  //  => optionsBuilder.UseSqlServer("Server=10.170.217.50;Database=Fin700;User ID=Consulta_Carran;password=carran123.;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

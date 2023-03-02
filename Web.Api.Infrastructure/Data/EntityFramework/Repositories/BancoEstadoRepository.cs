@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -13,10 +14,16 @@ namespace Web.Api.Infrastructure.Data.EntityFramework.Repositories
 {
     public class BancoEstadoRepository : IBancoEstadoRepository
     {
+        protected readonly IConfiguration _configuration;
+
+        public BancoEstadoRepository(IConfiguration configuration)
+        {
+            _configuration= configuration;
+        }
         public async Task<List<PlantillaBancoEstado>> getPlantillaBancoEstado(PlantillaBancoEstadoRequest request)
         {
             List<PlantillaBancoEstado> plantillaBancoEstado;
-            using (Fin700Context context = new Fin700Context())
+            using (Fin700Context context = new Fin700Context(_configuration))
             {
 
                 var query = from a in context.CceTMovimientos

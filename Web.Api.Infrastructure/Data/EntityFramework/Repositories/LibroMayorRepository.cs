@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,14 @@ namespace Web.Api.Infrastructure.Data.EntityFramework.Repositories
 {
     public class LibroMayorRepository : ILibroMayorRepository
     {
+        protected readonly IConfiguration _configuration;
+        public LibroMayorRepository(IConfiguration configuration)
+        {
+            _configuration= configuration;
+        }
         public async Task<List<LibroMayor>> GetLibroMayor(LibroMayorRequest request)
         {
-            Fin700Context context = new Fin700Context();
+            Fin700Context context = new Fin700Context(_configuration);
             try
             {
                 return await Task.FromResult((from a in context.ConTCabeceraComs
@@ -62,9 +68,9 @@ namespace Web.Api.Infrastructure.Data.EntityFramework.Repositories
             }
         }
 
-        private static KeyValuePair<int, string> getCreInfo(decimal pcreid)
+        private static KeyValuePair<int, string> getCreInfo(decimal pcreid, IConfiguration _configuration)
         {
-            using Fin700Context context = new Fin700Context();
+            using Fin700Context context = new Fin700Context(_configuration);
             ConTCentrosResp result = context.ConTCentrosResps.Where((ConTCentrosResp c) => c.CreId == pcreid).FirstOrDefault();
             if (result == null)
             {

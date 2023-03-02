@@ -1,5 +1,6 @@
 ﻿using Azure.Core;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +17,16 @@ namespace Web.Api.Infrastructure.Data.EntityFramework.Repositories
 {
     public class ForPayRepository : IForPayRepository
     {
+        protected readonly IConfiguration _configuration;
+        public ForPayRepository(IConfiguration configuration)
+        {
+            _configuration= configuration;
+        }
         public async Task<List<CuotaPromesa>> GetCuotasPromesa(ForPayRequest request)
         {
             DateTime hoy = DateTime.Parse(DateTime.Now.ToShortDateString());
             int[] arrItem = new int[2] { 11, 19 };
-            Fin700Context context = new Fin700Context();
+            Fin700Context context = new Fin700Context(_configuration);
             try
             {
                 return await Task.FromResult((from a in context.InmTCartaOferta
@@ -69,7 +75,7 @@ namespace Web.Api.Infrastructure.Data.EntityFramework.Repositories
                                                   Cuota = grp.Key.MovDocCuota,
                                                   Monto = grp.Key.MontoItem,
                                                   Rut = grp.Key.EntRut,
-                                                  Zona = getZona(grp.Key.CmuCodigo),
+                                                  Zona = getZona(grp.Key.CmuCodigo, _configuration),
                                                   IdentificadorCuota = $"{grp.Key.PCotizacionId}{grp.Key.MovDocCuota}",
                                                   mesAnio = $"{grp.Key.FechaVenc.Year}{grp.Key.FechaVenc.Month}"
                                               }).ToList());
@@ -87,7 +93,7 @@ namespace Web.Api.Infrastructure.Data.EntityFramework.Repositories
         {
             DateTime hoy = DateTime.Parse(DateTime.Now.ToShortDateString());
             int[] arrItem = new int[2] { 11, 19 };
-            Fin700Context context = new Fin700Context();
+            Fin700Context context = new Fin700Context(_configuration);
             try
             {
                 return await Task.FromResult((from a in context.InmTCartaOferta
@@ -145,7 +151,7 @@ namespace Web.Api.Infrastructure.Data.EntityFramework.Repositories
                                                   Region = grp.Key.RegNombre,
                                                   Comuna = grp.Key.CmuNombre,
                                                   FechaNacimiento = grp.Key.FechaNacTitular,
-                                                  Cuotas = GetCuota(grp.Key.CartaOfertaId)
+                                                  Cuotas = GetCuota(grp.Key.CartaOfertaId, _configuration)
                                               }).AsParallel().ToList());
             }
             finally
@@ -157,9 +163,9 @@ namespace Web.Api.Infrastructure.Data.EntityFramework.Repositories
             }
         }
 
-        private static string getZona(int idComuna)
+        private static string getZona(int idComuna, IConfiguration _configuration)
         {
-            using Fin700Context context = new Fin700Context();
+            using Fin700Context context = new Fin700Context(_configuration);
             DbSet<GlbTComuna> glbTComunas = context.GlbTComunas;
             ParameterExpression parameterExpression = Expression.Parameter(typeof(GlbTComuna), "g");
             switch (idComuna)
@@ -187,11 +193,11 @@ namespace Web.Api.Infrastructure.Data.EntityFramework.Repositories
             }
         }
 
-        private static List<Cuotas> GetCuota(decimal carofeid)
+        private static List<Cuotas> GetCuota(decimal carofeid, IConfiguration _configuration)
         {
             DateTime.Parse(DateTime.Now.ToShortDateString());
             _ = new int[2] { 11, 19 };
-            using Fin700Context context = new Fin700Context();
+            using Fin700Context context = new Fin700Context(_configuration);
             return (from a in context.InmTCartaOferta
                     join b in context.InmTCarOfeDetItemFinans on a.CartaOfertaId equals b.PCartaOfertaId
                     join c in context.InmTItemFinanciamientos on b.ItemFinId equals c.ItemFinId
